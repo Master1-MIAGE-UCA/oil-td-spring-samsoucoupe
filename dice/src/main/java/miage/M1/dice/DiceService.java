@@ -21,6 +21,7 @@ public class DiceService {
         DiceRollLog log = new DiceRollLog();
         log.setDiceCount(numberOfDice);
         log.setResults(results);
+        log.setTimestamp(java.time.LocalDateTime.now());
         diceRepository.save(log);
         return results;
     }
