@@ -14,9 +14,8 @@ public class HistoriquesDiceController {
     private DiceRepository diceRepository;
 
     @GetMapping
-    public String getAllDiceLogs() {
-        System.out.println("GET /diceLogs");
-        return diceRepository.findAll().toString();
+    public List<DiceRollLog> getDiceRollLogs() {
+        return diceRepository.findAll();
     }
 
 }
