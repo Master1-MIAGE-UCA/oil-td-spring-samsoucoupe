@@ -122,7 +122,7 @@ La base de données H2 est utilisée pour stocker l'historique des lancés de d�
 
 ## Tests
 
-Des tests unitaires et d'intégration peuvent être ajoutés pour valider le bon fonctionnement des services et des endpoints. Vous pouvez utiliser **JUnit** pour les tests de Spring Boot.
+Des tests unitaires et d'intégration peuvent être ajoutés pour valider le bon fonctionnement des services et des endpoints. Mais pas besoin pour le moment
 
 ## Conclusion
 
