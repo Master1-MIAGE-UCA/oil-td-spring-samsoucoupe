@@ -10,11 +10,11 @@ public class DiceService {
 
     @Autowired
     private DiceRepository diceRepository;
+    private Dice dice;
 
     public List<Integer> rollDice(int numberOfDice) {
         List<Integer> results = new ArrayList<>();
         for (int i = 0; i < numberOfDice; i++) {
-            Dice dice = new Dice();
             dice.roll();
             results.add(dice.getValue());
         }
