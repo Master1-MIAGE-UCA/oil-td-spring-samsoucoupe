@@ -22,7 +22,7 @@ public class DiceController {
 
     @Operation(summary = "Roll a dice")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Dice rolled successfully", content = @io.swagger.v3.oas.annotations.media.Content),
+            @ApiResponse(responseCode = "200", description = "Dice rolled successfully", content = @Content(examples = @ExampleObject(value = "3"))),
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     @GetMapping("/rollDice")
