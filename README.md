@@ -49,7 +49,7 @@ Le projet "Dice" est une application web développée avec Spring Boot, permetta
    http://localhost:8081
    ```
 
-5. Si Swagger est activé (fonctionnalité bonus), vous pouvez accéder à la documentation de l'API à l'adresse :
+5. Vous pouvez accéder à la documentation de l'API à l'adresse :
    ```bash
    http://localhost:8081/swagger-ui.html
    ```
