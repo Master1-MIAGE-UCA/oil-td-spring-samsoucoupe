@@ -124,10 +124,6 @@ La base de données H2 est utilisée pour stocker l'historique des lancés de d�
 
 Des tests unitaires et d'intégration peuvent être ajoutés pour valider le bon fonctionnement des services et des endpoints. Mais pas besoin pour le moment
 
-## Conclusion
-
-Ce projet permet de simuler un jeu de dés simple tout en mettant en œuvre les principales fonctionnalités offertes par Spring Boot. Il peut être étendu pour ajouter des fonctionnalités supplémentaires, comme la gestion des utilisateurs, des parties, ou encore des statistiques de jeu.
-
 ---
 
 *Merci d'avoir consulté ce projet !*
