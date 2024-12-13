@@ -31,7 +31,7 @@ Le projet "Dice" est une application web développée avec Spring Boot, permetta
 
 1. Clonez ce repository sur votre machine locale :
    ```bash
-   git clone https://github.com/yourusername/dice.git
+   git@github.com:Master1-MIAGE-UCA/oil-td-spring-samsoucoupe.git
    ```
 
 2. Accédez au dossier du projet :
