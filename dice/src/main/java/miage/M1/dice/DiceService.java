@@ -12,6 +12,10 @@ public class DiceService {
     private DiceRepository diceRepository;
     private Dice dice;
 
+    public DiceService() {
+        this.dice = new Dice();
+    }
+
     public List<Integer> rollDice(int numberOfDice) {
         List<Integer> results = new ArrayList<>();
         for (int i = 0; i < numberOfDice; i++) {
