@@ -31,7 +31,7 @@ Le projet "Dice" est une application web développée avec Spring Boot, permetta
 
 1. Clonez ce repository sur votre machine locale :
    ```bash
-   git clone https://github.com/yourusername/dice.git
+   git@github.com:Master1-MIAGE-UCA/oil-td-spring-samsoucoupe.git
    ```
 
 2. Accédez au dossier du projet :
@@ -49,7 +49,7 @@ Le projet "Dice" est une application web développée avec Spring Boot, permetta
    http://localhost:8081
    ```
 
-5. Si Swagger est activé (fonctionnalité bonus), vous pouvez accéder à la documentation de l'API à l'adresse :
+5. Vous pouvez accéder à la documentation de l'API à l'adresse :
    ```bash
    http://localhost:8081/swagger-ui.html
    ```
@@ -122,11 +122,7 @@ La base de données H2 est utilisée pour stocker l'historique des lancés de d�
 
 ## Tests
 
-Des tests unitaires et d'intégration peuvent être ajoutés pour valider le bon fonctionnement des services et des endpoints. Vous pouvez utiliser **JUnit** pour les tests de Spring Boot.
-
-## Conclusion
-
-Ce projet permet de simuler un jeu de dés simple tout en mettant en œuvre les principales fonctionnalités offertes par Spring Boot. Il peut être étendu pour ajouter des fonctionnalités supplémentaires, comme la gestion des utilisateurs, des parties, ou encore des statistiques de jeu.
+Des tests unitaires et d'intégration peuvent être ajoutés pour valider le bon fonctionnement des services et des endpoints. Mais pas besoin pour le moment
 
 ---
 
