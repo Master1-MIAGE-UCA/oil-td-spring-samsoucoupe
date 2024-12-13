@@ -1,74 +1,135 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/QGf4F8_h)
 # Projet "Dice" - Gestion de lancés de dés avec Spring Boot
 
 ## Description
-Le projet "Dice" est une application construite avec Spring Boot permettant de simuler des lancés de dés et de gérer un historique des résultats en base de données. Ce projet met en œuvre les concepts fondamentaux de Spring Boot, notamment l'injection de dépendances, les services RESTful, les entités JPA et les repositories.
 
+Le projet "Dice" est une application web développée avec Spring Boot, permettant de simuler des lancés de dés et de gérer l'historique des résultats dans une base de données H2. Cette application repose sur les principes fondamentaux de Spring Boot, tels que l'injection de dépendances, les services RESTful, les entités JPA et les repositories.
 
-## Étapes de réalisation
+## Objectifs du projet
 
-### 1. Création du projet Spring Boot
-- Utilisez [Spring Initializr](https://start.spring.io/) pour créer le projet.
-- Choisissez la dernière version de Spring Boot disponible (LTS).
-- Optez pour **Maven** ou **Gradle** comme outil de gestion de dépendances.
-- Ajoutez les dépendances nécessaires : **Spring Web**, **Spring Data JPA**, **H2 Database** .
+- Créer une application Spring Boot permettant de simuler des lancés de dés.
+- Stocker l'historique des lancés dans une base de données H2.
+- Implémenter des endpoints REST pour interagir avec l'application.
+- Utiliser des bonnes pratiques de développement, telles que l'injection de dépendances et l'utilisation d'annotations Spring.
 
-### 2. Configuration du projet
-- Configurez l'application pour qu'elle utilise le port **8081**.
-- Donnez un nom (**dice**) au projet dans le fichier de configuration :
-  - Utilisez **`application.properties`** ou **`application.yml`** selon votre préférence.
+## Fonctionnalités
 
-### 3. Création de la classe `Dice`
-- Implémentez une classe représentant un dé avec les méthodes nécessaires pour effectuer un lancé.
-- Marquez cette classe avec l'annotation `@Component` pour pouvoir l'injecter au besoin.
+- **Simuler un lancé de dé** : Possibilité de lancer un dé ou plusieurs dés et obtenir les résultats.
+- **Historique des lancés** : Tous les résultats des lancés de dés sont enregistrés dans la base de données avec des informations telles que le nombre de dés lancés, les résultats, et la date du lancé.
+- **Endpoints REST** :
+  - **`GET /rollDice`** : Lance un seul dé et retourne le résultat.
+  - **`GET /rollDices/{X}`** : Lance X dés (X étant un paramètre dynamique) et retourne les résultats.
+  - **`GET /diceLogs`** : Affiche l'historique des lancés de dés (résultats stockés dans la base de données).
 
-### 4. Création de l'entité `DiceRollLog`
-- Modélisez une entité JPA `DiceRollLog` comprenant les champs suivants :
-  - **`id`** : Identifiant unique.
-  - **`diceCount`** : Nombre de dés lancés.
-  - **`results`** : Liste ou chaîne des valeurs obtenues. Il existe de nombreuses façons de stocker des valeurs simples (simple String), certaines sont plus élégantes (@ElementCollection) que d'autres, vous pouvez choisir la solution qui vous conviendra.
-  - **`timestamp`** : Horodatage du lancé.
-- Utilisez des annotations JPA comme `@Entity`, `@Id`, `@GeneratedValue`, etc.
+## Technologies utilisées
 
-### 5. Création du `Repository`
-- Implémentez une interface héritant de `JpaRepository<DiceRollLog, Long>` pour gérer les interactions avec la base de données.
+- **Spring Boot** : Framework principal pour le développement de l'application.
+- **H2 Database** : Base de données en mémoire pour stocker l'historique des lancés de dés.
+- **Swagger (bonus)** : Documentation des API REST avec Swagger pour faciliter l'interaction avec l'application.
+- **Lombok (bonus)** : Simplification du code grâce à la bibliothèque Lombok, pour générer automatiquement les getters, setters, constructeurs, etc.
 
-### 6. Création du contrôleur REST pour lancer les dés
-- Implémentez un contrôleur REST annoté avec `@RestController`.
-- Ajoutez les endpoints suivants :
-  - **`GET /rollDice`** : Lancer un seul dé.
-  - **`GET /rollDices/{X}`** : Lancer X dés (X étant un paramètre dynamique).
+## Configuration
 
-### 7. Création du `Service`
-- Créez un service marqué avec `@Service` contenant une méthode :
-  - Prend en paramètre le nombre de dés à lancer.
-  - Retourne les résultats des lancés au contrôleur.
-  - Enregistre l’historique des lancés dans la base via le `Repository`.
+1. Clonez ce repository sur votre machine locale :
+   ```bash
+   git clone https://github.com/yourusername/dice.git
+   ```
 
-### 8. Contrôleur pour afficher les historiques
-- Ajoutez un autre contrôleur REST permettant d'afficher l'historique des lancés :
-  - **`GET /diceLogs`** : Retourne tous les enregistrements de `DiceRollLog` au format JSON.
+2. Accédez au dossier du projet :
+   ```bash
+   cd dice
+   ```
 
-### 9. Tests et validation
-- Démarrez l'application et testez les endpoints.
-- Vérifiez les résultats dans la base de données et les réponses JSON.
+3. Exécutez l'application Spring Boot avec Maven ou Gradle :
+   ```bash
+   ./mvnw spring-boot:run
+   ```
 
-### 10. (Bonus) Ajout de fonctionnalités avancées
-- **Swagger** :
-  - Ajoutez la dépendance Swagger/OpenAPI.
-  - Configurez Swagger pour documenter vos endpoints.
-  - Accédez à la documentation sur **`http://localhost:8081/swagger-ui.html`**.
-- **Lombok** :
-  - Utilisez Lombok pour simplifier les getters, setters et constructeurs de vos entités.
+4. L'application sera accessible à l'adresse suivante :
+   ```bash
+   http://localhost:8081
+   ```
+
+5. Si Swagger est activé (fonctionnalité bonus), vous pouvez accéder à la documentation de l'API à l'adresse :
+   ```bash
+   http://localhost:8081/swagger-ui.html
+   ```
+
+## Structure du projet
+
+- **`src/main/java/com/example/dice/`** :
+  - `DiceService.java` : Service responsable de la logique métier pour le lancé des dés et de l'enregistrement des résultats.
+  - `Dice.java` : Composant représentant un dé. Il gère le processus de lancement d'un dé et le calcul du résultat.
+  - `DiceRollLog.java` : Entité JPA représentant un historique de lancé de dés, stockée dans la base de données.
+  - `DiceRepository.java` : Repository permettant de gérer les interactions avec la base de données pour l'entité `DiceRollLog`.
+  - `DiceController.java` : Contrôleur REST exposant les endpoints pour lancer des dés et afficher l'historique.
+  
+- **`src/main/resources/application.properties`** : Configuration de l'application, y compris le port d'écoute (8081) et la configuration de la base de données H2.
+
+## Exemple d'utilisation des API
+
+- **Lancer un seul dé** :
+  ```bash
+  GET http://localhost:8081/rollDice
+  ```
+  Réponse :
+  ```json
+  [4]
+  ```
+
+- **Lancer plusieurs dés** :
+  ```bash
+  GET http://localhost:8081/rollDices/5
+  ```
+  Réponse :
+  ```json
+  [3, 1, 5, 6, 2]
+  ```
+
+- **Obtenir l'historique des lancés de dés** :
+  ```bash
+  GET http://localhost:8081/diceLogs
+  ```
+  Réponse :
+  ```json
+  [
+    {
+      "id": 1,
+      "diceCount": 3,
+      "results": "[2, 5, 6]",
+      "timestamp": "2024-12-13T10:15:00"
+    },
+    {
+      "id": 2,
+      "diceCount": 1,
+      "results": "[4]",
+      "timestamp": "2024-12-13T10:16:00"
+    }
+  ]
+  ```
+
+## Fonctionnalités bonus
+
+- **Swagger** : Documentation de l'API avec Swagger, accessible à l'URL `http://localhost:8081/swagger-ui.html`.
+- **Lombok** : Utilisation de Lombok pour éviter les boilerplate code (getters, setters, etc.).
+
+## Structure de la base de données
+
+La base de données H2 est utilisée pour stocker l'historique des lancés de dés. Elle contient une seule table `dice_roll_log` avec les colonnes suivantes :
+- `id` : Identifiant unique du lancé de dé.
+- `dice_count` : Nombre de dés lancés.
+- `results` : Liste des résultats des lancés de dés sous forme de chaîne JSON.
+- `timestamp` : Date et heure du lancé.
+
+## Tests
+
+Des tests unitaires et d'intégration peuvent être ajoutés pour valider le bon fonctionnement des services et des endpoints. Vous pouvez utiliser **JUnit** pour les tests de Spring Boot.
+
+## Conclusion
+
+Ce projet permet de simuler un jeu de dés simple tout en mettant en œuvre les principales fonctionnalités offertes par Spring Boot. Il peut être étendu pour ajouter des fonctionnalités supplémentaires, comme la gestion des utilisateurs, des parties, ou encore des statistiques de jeu.
 
 ---
 
-## Livrables
-- Le code complet du projet, accessible via un dépôt GitHub.
-- Un fichier `README.md` décrivant les étapes réalisées
+*Merci d'avoir consulté ce projet !*
 
-## Technologies
-- **Framework principal** : Spring Boot
-- **Base de données** : H2 
-- **Documentation API** : Swagger (bonus)
-- **Simplification de code** : Lombok (bonus)
+#### Samy ben dhiab
