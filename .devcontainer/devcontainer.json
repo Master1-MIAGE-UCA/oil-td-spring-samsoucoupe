@@ -21,5 +21,8 @@
 	],
 	"remoteEnv": {
 		"SUDO_FORCE_REMOVE": "true"
-	}
+	},
+	"workspaceFolder": "/workspaces/oil-td-spring-samsoucoupe/dice",
+	"postStartCommand": "mvn spring-boot:run",
+	"postCreateCommand": "mvn clean install"
 }
